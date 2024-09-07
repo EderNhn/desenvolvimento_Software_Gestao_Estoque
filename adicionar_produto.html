@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Produto</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/adicionar_produto">Adicionar Produto (Funcionalidade 1)</a></li>
+            <li><a href="/atualizar_estoque">Atualizar Estoque</a></li>
+            <li><a href="/ajustar_preco">Ajustar Preço</a></li>
+            <li><a href="/remover_produto">Remover Produto</a></li>
+        </ul>
+    </nav>
+    <h1>Adicionar Produto</h1>
+    <form action="/adicionar_produto" method="post">
+        <label for="nome">Nome do Produto:</label><br>
+        <input type="text" id="nome" name="nome"><br><br>
+        <label for="descricao">Descrição:</label><br>
+        <input type="text" id="descricao" name="descricao"><br><br>
+        <label for="preco">Preço:</label><br>
+        <input type="number" id="preco" name="preco" step="0.01"><br><br>
+        <label for="quantidade">Quantidade em Estoque:</label><br>
+        <input type="number" id="quantidade" name="quantidade"><br><br>
+        <input type="submit" value="Adicionar Produto">
+    </form>
+</body>
+</html>
