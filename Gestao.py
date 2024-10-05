@@ -35,6 +35,19 @@ def adicionar_produto():
         return redirect(url_for('index'))
     return render_template('adicionar_produto.html')
 
+# Rota para atualizar estoque
+@app.route('/atualizar_estoque', methods=['GET', 'POST'])
+def atualizar_estoque():
+    if request.method == 'POST':
+        cursor = db.cursor()
+        nome = request.form['nome']
+        quantidade = request.form['quantidade']
+        cursor.execute("UPDATE produtos SET quantidade=%s WHERE nome=%s",
+                       (quantidade, nome))
+        db.commit()
+        cursor.close()
+        return redirect(url_for('index'))
+    return render_template('atualizar_estoque.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
