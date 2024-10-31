@@ -49,5 +49,19 @@ def atualizar_estoque():
         return redirect(url_for('index'))
     return render_template('atualizar_estoque.html')
 
+# Rota para ajustar preço
+@app.route('/ajustar_preco', methods=['GET', 'POST'])
+def ajustar_preco():
+    if request.method == 'POST':
+        cursor = db.cursor()
+        nome = request.form['nome']
+        preco = request.form['preco']
+        cursor.execute("UPDATE produtos SET preco=%s WHERE nome=%s",
+                       (preco, nome))
+        db.commit()
+        cursor.close()
+        return redirect(url_for('index'))
+    return render_template('ajustar_preco.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
