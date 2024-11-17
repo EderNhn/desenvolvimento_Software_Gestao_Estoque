@@ -63,5 +63,17 @@ def ajustar_preco():
         return redirect(url_for('index'))
     return render_template('ajustar_preco.html')
 
+# Rota para remover produto
+@app.route('/remover_produto', methods=['GET', 'POST'])
+def remover_produto():
+    if request.method == 'POST':
+        cursor = db.cursor()
+        nome = request.form['nome']
+        cursor.execute("DELETE FROM produtos WHERE nome=%s", (nome,))
+        db.commit()
+        cursor.close()
+        return redirect(url_for('index'))
+    return render_template('remover_produto.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
